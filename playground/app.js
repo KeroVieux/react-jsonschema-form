@@ -421,7 +421,7 @@ class App extends Component {
     return (
       <div className="container-fluid">
         <div className="page-header">
-          <h1>react-jsonschema-form</h1>
+          <h1>create-form</h1>
           <div className="row">
             <div className="col-sm-8">
               <Selector onSelected={this.load} />

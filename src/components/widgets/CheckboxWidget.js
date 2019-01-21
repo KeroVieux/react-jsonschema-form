@@ -15,20 +15,30 @@ function CheckboxWidget(props) {
     onChange,
   } = props;
   return (
-    <div className={`checkbox ${disabled || readonly ? "disabled" : ""}`}>
+    <div>
       {schema.description && (
         <DescriptionField description={schema.description} />
       )}
-      <label>
-        <input
-          type="checkbox"
-          id={id}
-          checked={typeof value === "undefined" ? false : value}
-          required={required}
-          disabled={disabled || readonly}
-          autoFocus={autofocus}
-          onChange={event => onChange(event.target.checked)}
-        />
+      <label
+        className={`ant-checkbox-wrapper ${
+          disabled || readonly ? "ant-checkbox-wrapper-disabled" : ""
+        } ${value ? "ant-checkbox-wrapper-checked" : ""}`}>
+        <span
+          className={`ant-checkbox ${
+            disabled || readonly ? "ant-checkbox-disabled" : ""
+          } ${value ? "ant-checkbox-checked" : ""}`}>
+          <input
+            type="checkbox"
+            className="ant-checkbox-input"
+            id={id}
+            checked={typeof value === "undefined" ? false : value}
+            required={required}
+            disabled={disabled || readonly}
+            autoFocus={autofocus}
+            onChange={event => onChange(event.target.checked)}
+          />
+          <span className="ant-checkbox-inner" />
+        </span>
         <span>{label}</span>
       </label>
     </div>

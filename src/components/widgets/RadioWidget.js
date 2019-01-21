@@ -18,7 +18,7 @@ function RadioWidget(props) {
   // checked={checked} has been moved above name={name}, As mentioned in #349;
   // this is a temporary fix for radio button rendering bug in React, facebook/react#7630.
   return (
-    <div className="field-radio-group" id={id}>
+    <div className="ant-radio-group ant-radio-group-outline" id={id}>
       {enumOptions.map((option, i) => {
         const checked = option.value === value;
         const itemDisabled =
@@ -26,28 +26,35 @@ function RadioWidget(props) {
         const disabledCls =
           disabled || itemDisabled || readonly ? "disabled" : "";
         const radio = (
-          <span>
-            <input
-              type="radio"
-              checked={checked}
-              name={name}
-              required={required}
-              value={option.value}
-              disabled={disabled || itemDisabled || readonly}
-              autoFocus={autofocus && i === 0}
-              onChange={_ => onChange(option.value)}
-            />
+          <label
+            className={`ant-radio-wrapper ${
+              checked ? "ant-radio-wrapper-checked" : ""
+            }`}>
+            <span className={`ant-radio ${checked ? "ant-radio-checked" : ""}`}>
+              <input
+                type="radio"
+                className="ant-radio-input"
+                checked={checked}
+                name={name}
+                required={required}
+                value={option.value}
+                disabled={disabled || itemDisabled || readonly}
+                autoFocus={autofocus && i === 0}
+                onChange={_ => onChange(option.value)}
+              />
+              <span className="ant-radio-inner" />
+            </span>
             <span>{option.label}</span>
-          </span>
+          </label>
         );
 
         return inline ? (
-          <label key={i} className={`radio-inline ${disabledCls}`}>
+          <div key={i} className={`dib ${disabledCls}`}>
             {radio}
-          </label>
+          </div>
         ) : (
-          <div key={i} className={`radio ${disabledCls}`}>
-            <label>{radio}</label>
+          <div key={i} className={`db ${disabledCls}`}>
+            {radio}
           </div>
         );
       })}

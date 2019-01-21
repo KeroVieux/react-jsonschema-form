@@ -120,7 +120,7 @@ module.exports = {
         const { backgroundColor } = options;
         return (
           <input
-            className="form-control"
+            className="ant-input"
             onChange={event => onChange(event.target.value)}
             style={{ backgroundColor }}
             value={value}

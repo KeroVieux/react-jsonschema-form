@@ -17,44 +17,59 @@ function CheckboxesWidget(props) {
   const { id, disabled, options, value, autofocus, readonly, onChange } = props;
   const { enumOptions, enumDisabled, inline } = options;
   return (
-    <div className="checkboxes" id={id}>
+    <span id={id}>
       {enumOptions.map((option, index) => {
         const checked = value.indexOf(option.value) !== -1;
         const itemDisabled =
-          enumDisabled && enumDisabled.indexOf(option.value) != -1;
+          enumDisabled && enumDisabled.indexOf(option.value) !== -1;
         const disabledCls =
           disabled || itemDisabled || readonly ? "disabled" : "";
         const checkbox = (
-          <span>
-            <input
-              type="checkbox"
-              id={`${id}_${index}`}
-              checked={checked}
-              disabled={disabled || itemDisabled || readonly}
-              autoFocus={autofocus && index === 0}
-              onChange={event => {
-                const all = enumOptions.map(({ value }) => value);
-                if (event.target.checked) {
-                  onChange(selectValue(option.value, value, all));
-                } else {
-                  onChange(deselectValue(option.value, value));
-                }
-              }}
-            />
+          <label
+            className={`ant-checkbox-group-item ant-checkbox-wrapper ${
+              disabled || itemDisabled || readonly
+                ? "ant-checkbox-wrapper-disabled"
+                : ""
+            } ${checked ? "ant-checkbox-wrapper-checked" : ""}`}>
+            <span
+              className={`ant-checkbox ${
+                disabled || itemDisabled || readonly
+                  ? "ant-checkbox-disabled"
+                  : ""
+              } ${checked ? "ant-checkbox-checked" : ""}`}>
+              <input
+                type="checkbox"
+                className="ant-checkbox-input"
+                value={option.value}
+                id={`${id}_${index}`}
+                checked={checked}
+                disabled={disabled || itemDisabled || readonly}
+                autoFocus={autofocus && index === 0}
+                onChange={event => {
+                  const all = enumOptions.map(({ value }) => value);
+                  if (event.target.checked) {
+                    onChange(selectValue(option.value, value, all));
+                  } else {
+                    onChange(deselectValue(option.value, value));
+                  }
+                }}
+              />
+              <span className="ant-checkbox-inner" />
+            </span>
             <span>{option.label}</span>
-          </span>
+          </label>
         );
         return inline ? (
-          <label key={index} className={`checkbox-inline ${disabledCls}`}>
+          <div key={index} className={`ant-checkbox-group dib ${disabledCls}`}>
             {checkbox}
-          </label>
+          </div>
         ) : (
-          <div key={index} className={`checkbox ${disabledCls}`}>
-            <label>{checkbox}</label>
+          <div key={index} className={`ant-checkbox-group db ${disabledCls}`}>
+            {checkbox}
           </div>
         );
       })}
-    </div>
+    </span>
   );
 }
 

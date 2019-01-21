@@ -30,7 +30,7 @@ function BaseInput(props) {
 
   return (
     <input
-      className="form-control"
+      className="ant-input"
       readOnly={readonly}
       disabled={disabled}
       autoFocus={autofocus}

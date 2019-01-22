@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import * as types from "../../types";
 
 import {
+  uuid,
   orderProperties,
   retrieveSchema,
   getDefaultRegistry,
@@ -30,7 +31,7 @@ function DefaultObjectFieldTemplate(props) {
 
   const { TitleField, DescriptionField } = props;
   return (
-    <fieldset id={props.idSchema.$id}>
+    <fieldset id={`${props.idSchema.$id}__${uuid()}`}>
       {(props.uiSchema["ui:title"] || props.title) && (
         <TitleField
           id={`${props.idSchema.$id}__title`}
@@ -230,6 +231,7 @@ class ObjectField extends Component {
               name={name}
               required={this.isRequired(name)}
               schema={schema.properties[name]}
+              formLayout={schema.formLayout}
               uiSchema={uiSchema[name]}
               errorSchema={errorSchema[name]}
               idSchema={idSchema[name]}

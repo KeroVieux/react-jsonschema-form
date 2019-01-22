@@ -1,5 +1,6 @@
 module.exports = {
   schema: {
+    formLayout: "horizontal",
     title: "A registration form",
     description: "A simple form example.",
     type: "object",
@@ -42,7 +43,7 @@ module.exports = {
     age: {
       "ui:widget": "updown",
       "ui:title": "Age of person",
-      "ui:description": "(earthian year)",
+      "ui:help": "(earthian year)",
     },
     bio: {
       "ui:widget": "textarea",

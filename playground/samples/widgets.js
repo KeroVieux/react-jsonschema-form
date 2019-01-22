@@ -136,7 +136,7 @@ module.exports = {
         const { enumOptions, backgroundColor } = options;
         return (
           <select
-            className="form-control"
+            className="ant-input"
             style={{ backgroundColor }}
             value={value}
             onChange={event => onChange(event.target.value)}>

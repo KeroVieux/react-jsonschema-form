@@ -22,11 +22,13 @@ function CheckboxWidget(props) {
       <label
         className={`ant-checkbox-wrapper ${
           disabled || readonly ? "ant-checkbox-wrapper-disabled" : ""
-        } ${value ? "ant-checkbox-wrapper-checked" : ""}`}>
+        } ${
+          typeof value === "undefined" ? "ant-checkbox-wrapper-checked" : ""
+        }`}>
         <span
           className={`ant-checkbox ${
             disabled || readonly ? "ant-checkbox-disabled" : ""
-          } ${value ? "ant-checkbox-checked" : ""}`}>
+          } ${typeof value === "undefined" ? "ant-checkbox-checked" : ""}`}>
           <input
             type="checkbox"
             className="ant-checkbox-input"

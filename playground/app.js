@@ -158,7 +158,7 @@ class GeoPosition extends Component {
           <div className="col-sm-6">
             <label>Latitude</label>
             <input
-              className="form-control"
+              className="ant-input"
               type="number"
               value={lat}
               step="0.00001"
@@ -168,7 +168,7 @@ class GeoPosition extends Component {
           <div className="col-sm-6">
             <label>Longitude</label>
             <input
-              className="form-control"
+              className="ant-input"
               type="number"
               value={lon}
               step="0.00001"
@@ -278,42 +278,6 @@ function ThemeSelector({ theme, select }) {
       <div />
     </Form>
   );
-}
-
-class CopyLink extends Component {
-  onCopyClick = event => {
-    this.input.select();
-    document.execCommand("copy");
-  };
-
-  render() {
-    const { shareURL, onShare } = this.props;
-    if (!shareURL) {
-      return (
-        <button className="btn btn-default" type="button" onClick={onShare}>
-          Share
-        </button>
-      );
-    }
-    return (
-      <div className="input-group">
-        <input
-          type="text"
-          ref={input => (this.input = input)}
-          className="form-control"
-          defaultValue={shareURL}
-        />
-        <span className="input-group-btn">
-          <button
-            className="btn btn-default"
-            type="button"
-            onClick={this.onCopyClick}>
-            <i className="glyphicon glyphicon-copy" />
-          </button>
-        </span>
-      </div>
-    );
-  }
 }
 
 class App extends Component {
@@ -426,7 +390,7 @@ class App extends Component {
             <div className="col-sm-8">
               <Selector onSelected={this.load} />
             </div>
-            <div className="col-sm-2">
+            <div className="col-sm-2" style={{ display: "none" }}>
               <Form
                 schema={liveSettingsSchema}
                 formData={liveSettings}
@@ -434,7 +398,7 @@ class App extends Component {
                 <div />
               </Form>
             </div>
-            <div className="col-sm-2">
+            <div className="col-sm-2" style={{ display: "none" }}>
               <ThemeSelector theme={theme} select={this.onThemeSelected} />
             </div>
           </div>
@@ -491,15 +455,9 @@ class App extends Component {
               onError={log("errors")}>
               <div className="row">
                 <div className="col-sm-3">
-                  <button className="btn btn-primary" type="submit">
+                  <button className="ant-btn ant-btn-primary" type="submit">
                     Submit
                   </button>
-                </div>
-                <div className="col-sm-9 text-right">
-                  <CopyLink
-                    shareURL={this.state.shareURL}
-                    onShare={this.onShare}
-                  />
                 </div>
               </div>
             </Form>

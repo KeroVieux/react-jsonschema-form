@@ -86,13 +86,13 @@ function DefaultArrayItem(props) {
             {props.hasRemove && (
               <IconButton
                 type="danger"
-                icon="remove"
                 className="array-item-remove"
                 tabIndex="-1"
                 style={btnStyle}
                 disabled={props.disabled || props.readonly}
-                onClick={props.onDropIndexClick(props.index)}
-              />
+                onClick={props.onDropIndexClick(props.index)}>
+                <i className="fa fa-remove" />
+              </IconButton>
             )}
           </div>
         </div>

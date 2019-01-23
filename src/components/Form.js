@@ -218,7 +218,9 @@ export default class Form extends Component {
 
     return (
       <form
-        className={className ? className : "rjsf"}
+        className={`ant-form ant-form-${schema.formLayout} ${
+          className ? className : ""
+        }`}
         id={id}
         name={name}
         method={method}
@@ -250,11 +252,11 @@ export default class Form extends Component {
         {children ? (
           children
         ) : (
-          <div>
-            <button type="submit" className="btn btn-info">
-              Submit
+          <p>
+            <button type="submit" className="ant-btn ant-btn-primary">
+              提交
             </button>
-          </div>
+          </p>
         )}
       </form>
     );

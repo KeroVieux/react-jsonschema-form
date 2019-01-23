@@ -7,19 +7,11 @@ function DescriptionField(props) {
     // See #312: Ensure compatibility with old versions of React.
     return <div />;
   }
-  if (typeof description === "string") {
-    return (
-      <p id={id} className="field-description">
-        {description}
-      </p>
-    );
-  } else {
-    return (
-      <div id={id} className="field-description">
-        {description}
-      </div>
-    );
-  }
+  return (
+    <div id={id} className="ant-form-extra" style={{ marginBottom: "20px" }}>
+      {description}
+    </div>
+  );
 }
 
 if (process.env.NODE_ENV !== "production") {

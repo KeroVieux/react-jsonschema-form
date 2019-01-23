@@ -34,7 +34,7 @@ function DateElement(props) {
     <SelectWidget
       schema={{ type: "integer" }}
       id={id}
-      className="form-control"
+      className="ant-input"
       options={{ enumOptions: rangeOptions(range[0], range[1]) }}
       placeholder={type}
       value={value}

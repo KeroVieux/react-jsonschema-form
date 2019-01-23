@@ -144,10 +144,10 @@ class AnyOfField extends Component {
     }
 
     return (
-      <div className="panel panel-default panel-body">
-        <div className="form-group">
+      <div className="ant-card ant-card-bordered">
+        <div className="ant-form-item">
           <select
-            className="form-control"
+            className="ant-input"
             onChange={this.onOptionChange}
             value={selectedOption}
             id={`${idSchema.$id}_anyof_select`}>

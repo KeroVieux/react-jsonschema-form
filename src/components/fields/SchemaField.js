@@ -1,5 +1,4 @@
 import { ADDITIONAL_PROPERTY_FLAG } from "../../utils";
-import IconButton from "../IconButton";
 import React from "react";
 import PropTypes from "prop-types";
 import * as types from "../../types";
@@ -18,7 +17,6 @@ import {
 } from "../../utils";
 import UnsupportedField from "./UnsupportedField";
 
-const REQUIRED_FIELD_SYMBOL = "*";
 const COMPONENT_TYPES = {
   array: "ArrayField",
   boolean: "BooleanField",
@@ -65,10 +63,11 @@ function Label(props) {
     return <div />;
   }
   return (
-    <label className="control-label" htmlFor={id}>
-      {label}
-      {required && <span className="required">{REQUIRED_FIELD_SYMBOL}</span>}
-    </label>
+    <div className={`ant-form-item-label`}>
+      <label className={required ? "ant-form-item-required" : ""} htmlFor={id}>
+        {label}
+      </label>
+    </div>
   );
 }
 
@@ -76,7 +75,7 @@ function LabelInput(props) {
   const { id, label, onChange } = props;
   return (
     <input
-      className="form-control"
+      className="ant-input"
       type="text"
       id={id}
       onBlur={event => onChange(event.target.value)}
@@ -91,10 +90,7 @@ function Help(props) {
     // See #312: Ensure compatibility with old versions of React.
     return <div />;
   }
-  if (typeof help === "string") {
-    return <p className="help-block">{help}</p>;
-  }
-  return <div className="help-block">{help}</div>;
+  return <div className="ant-form-extra">{help}</div>;
 }
 
 function ErrorList(props) {
@@ -105,10 +101,10 @@ function ErrorList(props) {
   return (
     <div>
       <p />
-      <ul className="error-detail bs-callout bs-callout-info">
+      <ul className="error-detail">
         {errors.map((error, index) => {
           return (
-            <li className="text-danger" key={index}>
+            <li className="ant-form-explain" key={index}>
               {error}
             </li>
           );
@@ -141,7 +137,7 @@ function DefaultTemplate(props) {
 
   return (
     <div className={classNames}>
-      <div className={additional ? "row" : ""}>
+      <div className={additional ? "ant-row" : ""}>
         {additional && (
           <div className="col-xs-5 form-additional">
             <div className="form-group">
@@ -166,15 +162,15 @@ function DefaultTemplate(props) {
         </div>
         <div className="col-xs-2">
           {additional && (
-            <IconButton
+            <button
               type="danger"
-              icon="remove"
-              className="array-item-remove btn-block"
               tabIndex="-1"
               style={{ border: "0" }}
               disabled={props.disabled || props.readonly}
               onClick={onDropPropertyClick(props.label)}
-            />
+              className="array-item-remove">
+              <i className="fa fa-remove" />
+            </button>
           )}
         </div>
       </div>
@@ -294,7 +290,7 @@ function SchemaFieldRender(props) {
     "form-group",
     "field",
     `field-${type}`,
-    errors && errors.length > 0 ? "field-error has-error has-danger" : "",
+    errors && errors.length > 0 ? "has-error" : "",
     uiSchema.classNames,
   ]
     .join(" ")

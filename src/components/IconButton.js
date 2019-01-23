@@ -5,9 +5,9 @@ export default function IconButton(props) {
   return (
     <button
       type="button"
-      className={`btn btn-${type} ${className}`}
-      {...otherProps}>
-      <i className={`glyphicon glyphicon-${icon}`} />
-    </button>
+      icon={icon}
+      className={`ant-btn ant-btn-${type} ${className}`}
+      {...otherProps}
+    />
   );
 }

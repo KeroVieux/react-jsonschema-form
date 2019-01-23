@@ -252,11 +252,11 @@ export default class Form extends Component {
         {children ? (
           children
         ) : (
-          <p>
+          <div style={{ paddingTop: "15px" }}>
             <button type="submit" className="ant-btn ant-btn-primary">
               提交
             </button>
-          </p>
+          </div>
         )}
       </form>
     );

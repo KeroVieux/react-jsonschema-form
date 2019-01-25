@@ -3,19 +3,23 @@ import React from "react";
 export default function ErrorList(props) {
   const { errors } = props;
   return (
-    <div className="panel panel-danger errors">
-      <div className="panel-heading">
-        <h3 className="panel-title">Errors</h3>
+    <div className="ant-card ant-card-bordered">
+      <div className="ant-card-head">
+        <div className="ant-card-head-wrapper">
+          <div className="ant-card-head-title">错误列表</div>
+        </div>
       </div>
-      <ul className="list-group">
-        {errors.map((error, i) => {
-          return (
-            <li key={i} className="list-group-item text-danger">
-              {error.stack}
-            </li>
-          );
-        })}
-      </ul>
+      <div className="ant-card-body">
+        <ul>
+          {errors.map((error, i) => {
+            return (
+              <li key={i} className="has-error">
+                {error.stack}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }

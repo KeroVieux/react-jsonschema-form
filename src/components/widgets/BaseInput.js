@@ -29,17 +29,27 @@ function BaseInput(props) {
   };
 
   return (
-    <input
-      className="ant-input"
-      readOnly={readonly}
-      disabled={disabled}
-      autoFocus={autofocus}
-      value={value == null ? "" : value}
-      {...inputProps}
-      onChange={_onChange}
-      onBlur={onBlur && (event => onBlur(inputProps.id, event.target.value))}
-      onFocus={onFocus && (event => onFocus(inputProps.id, event.target.value))}
-    />
+    <div className="ant-form-item-control-wrapper ant-col-xs-24 ant-col-sm-18">
+      <div className="ant-form-item-control">
+        <span className="ant-form-item-children">
+          <input
+            className="ant-input"
+            readOnly={readonly}
+            disabled={disabled}
+            autoFocus={autofocus}
+            value={value == null ? "" : value}
+            {...inputProps}
+            onChange={_onChange}
+            onBlur={
+              onBlur && (event => onBlur(inputProps.id, event.target.value))
+            }
+            onFocus={
+              onFocus && (event => onFocus(inputProps.id, event.target.value))
+            }
+          />
+        </span>
+      </div>
+    </div>
   );
 }
 

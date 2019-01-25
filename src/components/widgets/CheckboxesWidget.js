@@ -17,7 +17,9 @@ function CheckboxesWidget(props) {
   const { id, disabled, options, value, autofocus, readonly, onChange } = props;
   const { enumOptions, enumDisabled, inline } = options;
   return (
-    <span id={id}>
+    <span
+      id={id}
+      className="ant-form-item-control-wrapper ant-col-xs-24 ant-col-sm-18">
       {enumOptions.map((option, index) => {
         const checked = value.indexOf(option.value) !== -1;
         const itemDisabled =
@@ -60,11 +62,11 @@ function CheckboxesWidget(props) {
           </label>
         );
         return inline ? (
-          <div key={index} className={`ant-checkbox-group dib ${disabledCls}`}>
+          <span key={index} className={`${disabledCls}`}>
             {checkbox}
-          </div>
+          </span>
         ) : (
-          <div key={index} className={`ant-checkbox-group db ${disabledCls}`}>
+          <div key={index} className={`${disabledCls}`}>
             {checkbox}
           </div>
         );

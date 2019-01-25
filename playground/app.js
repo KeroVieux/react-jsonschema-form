@@ -453,10 +453,11 @@ class App extends Component {
               }
               transformErrors={transformErrors}
               onError={log("errors")}>
-              <div className="row">
-                <div className="col-sm-3">
-                  <button className="ant-btn ant-btn-primary" type="submit">
-                    Submit
+              <div className="ant-row">
+                <div className="ant-col-xs-24 ant-col-sm-6" />
+                <div className="ant-col-xs-24 ant-col-sm-18">
+                  <button type="submit" className="ant-btn ant-btn-primary">
+                    提交
                   </button>
                 </div>
               </div>

@@ -1,5 +1,4 @@
 import AddButton from "../AddButton";
-import IconButton from "../IconButton";
 import React, { Component } from "react";
 import includes from "core-js/library/fn/array/includes";
 import * as types from "../../types";
@@ -47,52 +46,55 @@ function DefaultArrayItem(props) {
   };
   return (
     <div key={props.index} className={props.className}>
-      <div className={props.hasToolbar ? "col-xs-9" : "col-xs-12"}>
+      <div className={props.hasToolbar ? "ant-col-18" : "ant-col-24"}>
         {props.children}
       </div>
 
       {props.hasToolbar && (
-        <div className="col-xs-3 array-item-toolbox">
+        <div
+          className="ant-col-6 array-item-toolbox"
+          style={{ paddingLeft: "10px", paddingTop: "4px" }}>
           <div
-            className="btn-group"
+            className="ant-btn-group"
             style={{
               display: "flex",
               justifyContent: "space-around",
             }}>
             {(props.hasMoveUp || props.hasMoveDown) && (
-              <IconButton
-                icon="arrow-up"
-                className="array-item-move-up"
+              <button
+                type="button"
+                className="ant-btn array-item-move-up"
                 tabIndex="-1"
                 style={btnStyle}
                 disabled={props.disabled || props.readonly || !props.hasMoveUp}
-                onClick={props.onReorderClick(props.index, props.index - 1)}
-              />
+                onClick={props.onReorderClick(props.index, props.index - 1)}>
+                <i className="fa fa-arrow-up" />
+              </button>
             )}
 
             {(props.hasMoveUp || props.hasMoveDown) && (
-              <IconButton
-                icon="arrow-down"
-                className="array-item-move-down"
+              <button
+                type="button"
+                className="ant-btn array-item-move-down"
                 tabIndex="-1"
                 style={btnStyle}
                 disabled={
                   props.disabled || props.readonly || !props.hasMoveDown
                 }
-                onClick={props.onReorderClick(props.index, props.index + 1)}
-              />
+                onClick={props.onReorderClick(props.index, props.index + 1)}>
+                <i className="fa fa-arrow-down" />
+              </button>
             )}
 
             {props.hasRemove && (
-              <IconButton
-                type="danger"
-                className="array-item-remove"
+              <button
+                className="array-item-remove ant-btn ant-btn-danger"
                 tabIndex="-1"
                 style={btnStyle}
                 disabled={props.disabled || props.readonly}
                 onClick={props.onDropIndexClick(props.index)}>
                 <i className="fa fa-remove" />
-              </IconButton>
+              </button>
             )}
           </div>
         </div>
@@ -121,7 +123,7 @@ function DefaultFixedArrayFieldTemplate(props) {
       )}
 
       <div
-        className="row array-item-list"
+        className="ant-row array-item-list"
         key={`array-item-list-${props.idSchema.$id}`}>
         {props.items && props.items.map(DefaultArrayItem)}
       </div>
@@ -160,7 +162,7 @@ function DefaultNormalArrayFieldTemplate(props) {
       )}
 
       <div
-        className="row array-item-list"
+        className="ant-row array-item-list"
         key={`array-item-list-${props.idSchema.$id}`}>
         {props.items && props.items.map(p => DefaultArrayItem(p))}
       </div>
@@ -645,7 +647,7 @@ class ArrayField extends Component {
           rawErrors={rawErrors}
         />
       ),
-      className: "array-item",
+      className: "array-item ant-row",
       disabled,
       hasToolbar: has.toolbar,
       hasMoveUp: has.moveUp,

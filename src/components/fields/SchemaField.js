@@ -63,7 +63,7 @@ function Label(props) {
     return <div />;
   }
   return (
-    <div className={`ant-form-item-label`}>
+    <div className="ant-col-xs-24 ant-col-sm-6 ant-form-item-label">
       <label className={required ? "ant-form-item-required" : ""} htmlFor={id}>
         {label}
       </label>
@@ -90,7 +90,14 @@ function Help(props) {
     // See #312: Ensure compatibility with old versions of React.
     return <div />;
   }
-  return <div className="ant-form-extra">{help}</div>;
+  return (
+    <div className="ant-row">
+      <div className="ant-col-xs-24 ant-col-sm-6" />
+      <div className="ant-col-xs-24 ant-col-sm-18">
+        <div className="ant-form-extra a">{help}</div>
+      </div>
+    </div>
+  );
 }
 
 function ErrorList(props) {
@@ -99,17 +106,19 @@ function ErrorList(props) {
     return <div />;
   }
   return (
-    <div>
-      <p />
-      <ul className="error-detail">
-        {errors.map((error, index) => {
-          return (
-            <li className="ant-form-explain" key={index}>
-              {error}
-            </li>
-          );
-        })}
-      </ul>
+    <div className="ant-row">
+      <div className="ant-col-xs-24 ant-col-sm-6" />
+      <div className="ant-col-xs-24 ant-col-sm-18">
+        <ul className="error-detail">
+          {errors.map((error, index) => {
+            return (
+              <li className="ant-form-explain" key={index}>
+                {error}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
@@ -139,8 +148,8 @@ function DefaultTemplate(props) {
     <div className={classNames}>
       <div className={additional ? "ant-row" : ""}>
         {additional && (
-          <div className="col-xs-5 form-additional">
-            <div className="form-group">
+          <div className="ant-col-10 form-additional">
+            <div className="ant-form-item-control">
               <Label label={keyLabel} required={required} id={`${id}-key`} />
               <LabelInput
                 label={label}
@@ -153,14 +162,18 @@ function DefaultTemplate(props) {
         )}
 
         <div
-          className={additional ? "form-additional form-group col-xs-5" : ""}>
+          className={
+            additional
+              ? "form-additional ant-form-item-control ant-col-10"
+              : "ant-row"
+          }>
           {displayLabel && <Label label={label} required={required} id={id} />}
-          {displayLabel && description ? description : null}
           {children}
+          {displayLabel && description ? description : null}
           {errors}
           {help}
         </div>
-        <div className="col-xs-2">
+        <div className="ant-col-4">
           {additional && (
             <button
               type="danger"
@@ -168,7 +181,7 @@ function DefaultTemplate(props) {
               style={{ border: "0" }}
               disabled={props.disabled || props.readonly}
               onClick={onDropPropertyClick(props.label)}
-              className="array-item-remove">
+              className="array-item-remove ant-btn ant-btn-danger">
               <i className="fa fa-remove" />
             </button>
           )}
@@ -287,7 +300,7 @@ function SchemaFieldRender(props) {
   const help = uiSchema["ui:help"];
   const hidden = uiSchema["ui:widget"] === "hidden";
   const classNames = [
-    "form-group",
+    "ant-form-item",
     "field",
     `field-${type}`,
     errors && errors.length > 0 ? "has-error" : "",

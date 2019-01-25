@@ -145,38 +145,39 @@ class AnyOfField extends Component {
 
     return (
       <div className="ant-card ant-card-bordered">
-        <div className="ant-form-item">
-          <select
-            className="ant-input"
-            onChange={this.onOptionChange}
-            value={selectedOption}
-            id={`${idSchema.$id}_anyof_select`}>
-            {options.map((option, index) => {
-              return (
-                <option key={index} value={index}>
-                  {option.title || `Option ${index + 1}`}
-                </option>
-              );
-            })}
-          </select>
+        <div className="ant-card-body">
+          <div className="ant-form-item">
+            <select
+              className="ant-input"
+              onChange={this.onOptionChange}
+              value={selectedOption}
+              id={`${idSchema.$id}_anyof_select`}>
+              {options.map((option, index) => {
+                return (
+                  <option key={index} value={index}>
+                    {option.title || `Option ${index + 1}`}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          {option !== null && (
+            <_SchemaField
+              schema={optionSchema}
+              uiSchema={uiSchema}
+              errorSchema={errorSchema}
+              idSchema={idSchema}
+              idPrefix={idPrefix}
+              formData={formData}
+              onChange={onChange}
+              onBlur={onBlur}
+              onFocus={onFocus}
+              registry={registry}
+              safeRenderCompletion={safeRenderCompletion}
+              disabled={disabled}
+            />
+          )}
         </div>
-
-        {option !== null && (
-          <_SchemaField
-            schema={optionSchema}
-            uiSchema={uiSchema}
-            errorSchema={errorSchema}
-            idSchema={idSchema}
-            idPrefix={idPrefix}
-            formData={formData}
-            onChange={onChange}
-            onBlur={onBlur}
-            onFocus={onFocus}
-            registry={registry}
-            safeRenderCompletion={safeRenderCompletion}
-            disabled={disabled}
-          />
-        )}
       </div>
     );
   }

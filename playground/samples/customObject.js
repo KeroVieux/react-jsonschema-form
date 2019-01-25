@@ -4,10 +4,10 @@ function ObjectFieldTemplate({ TitleField, properties, title, description }) {
   return (
     <div>
       <TitleField title={title} />
-      <div className="row">
+      <div className="ant-row">
         {properties.map(prop => (
           <div
-            className="col-lg-2 col-md-4 col-sm-6 col-xs-12"
+            className="ant-col-sm-24 ant-col-lg-8 ant-col-xl-4"
             key={prop.content.key}>
             {prop.content}
           </div>

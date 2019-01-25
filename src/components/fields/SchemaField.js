@@ -74,13 +74,19 @@ function Label(props) {
 function LabelInput(props) {
   const { id, label, onChange } = props;
   return (
-    <input
-      className="ant-input"
-      type="text"
-      id={id}
-      onBlur={event => onChange(event.target.value)}
-      defaultValue={label}
-    />
+    <div className="ant-form-item-control-wrapper ant-col-xs-24 ant-col-sm-18">
+      <div className="ant-form-item-control">
+        <span className="ant-form-item-children">
+          <input
+            className="ant-input"
+            type="text"
+            id={id}
+            onBlur={event => onChange(event.target.value)}
+            defaultValue={label}
+          />
+        </span>
+      </div>
+    </div>
   );
 }
 
@@ -146,10 +152,10 @@ function DefaultTemplate(props) {
 
   return (
     <div className={classNames}>
-      <div className={additional ? "ant-row" : ""}>
+      <div className={additional ? "ant-row form-additional" : ""}>
         {additional && (
           <div className="ant-col-10 form-additional">
-            <div className="ant-form-item-control">
+            <div className="ant-form-item-control ant">
               <Label label={keyLabel} required={required} id={`${id}-key`} />
               <LabelInput
                 label={label}
@@ -173,7 +179,9 @@ function DefaultTemplate(props) {
           {errors}
           {help}
         </div>
-        <div className="ant-col-4">
+        <div
+          className="ant-col-4"
+          style={{ paddingLeft: "10px", paddingTop: "4px" }}>
           {additional && (
             <button
               type="danger"

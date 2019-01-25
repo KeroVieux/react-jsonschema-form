@@ -2,8 +2,8 @@ import React from "react";
 
 export default function AddButton({ className, onClick, disabled }) {
   return (
-    <div className="row">
-      <p className={`col-xs-3 col-xs-offset-9 text-right ${className}`}>
+    <div className="ant-row">
+      <p className={`ant-col-6 ant-col-offset-18 text-right ${className}`}>
         <button
           type="button"
           tabIndex="0"

@@ -31,7 +31,7 @@ function CheckboxWidget(props) {
             type="checkbox"
             className="ant-checkbox-input"
             id={id}
-            checked={value}
+            checked={!!value}
             required={required}
             disabled={disabled || readonly}
             autoFocus={autofocus}

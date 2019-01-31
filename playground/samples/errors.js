@@ -35,7 +35,7 @@ module.exports = {
   uiSchema: {},
   formData: {
     firstName: "Chuck",
-    active: "wrong",
+    active: true,
     skills: ["karate", "budo", "aikido"],
     multipleChoicesList: ["foo", "bar", "fuzz"],
   },

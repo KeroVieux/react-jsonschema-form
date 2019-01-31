@@ -97,7 +97,7 @@ function Help(props) {
     return <div />;
   }
   return (
-    <div className="ant-row">
+    <div className="ant-row" style={{ clear: "both" }}>
       <div className="ant-col-xs-24 ant-col-sm-6" />
       <div className="ant-col-xs-24 ant-col-sm-18">
         <div className="ant-form-extra a">{help}</div>
@@ -112,20 +112,15 @@ function ErrorList(props) {
     return <div />;
   }
   return (
-    <div className="ant-row">
-      <div className="ant-col-xs-24 ant-col-sm-6" />
-      <div className="ant-col-xs-24 ant-col-sm-18">
-        <ul className="error-detail">
-          {errors.map((error, index) => {
-            return (
-              <li className="ant-form-explain" key={index}>
-                {error}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </div>
+    <ul className="error-detail" style={{ clear: "both" }}>
+      {errors.map((error, index) => {
+        return (
+          <li className="ant-form-explain" key={index}>
+            {error}
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 function DefaultTemplate(props) {
